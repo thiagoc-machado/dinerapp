@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+            id="bootstrap-css"
+        />
+
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="{% static 'login/login.css' %}" rel="stylesheet" />
+        <title>Dinerapp - dashboard</title>
+    </head>
+    <div class="container mt-4">
+        <form method="get" action="{% url 'dashboard' %}">
+            <label for="mes">Selecione o mês e ano:</label>
+            <select name="mes" id="mes" class="form-control">
+                {% for month in meses %}
+                    <option value="{{ month.0 }}" {% if month.0 == mes_atual %}selected{% endif %}>{{ month.1 }}</option>
+                {% endfor %}
+            </select>
+            <select name="ano" id="ano" class="form-control">
+                {% for year in anos %}
+                    <option value="{{ year }}" {% if year == ano_atual %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+    
+            <button type="submit" class="btn btn-secondary">
+                Filtrar
+            </button>
+        </form>
+    </div>
+    <br></br>
+    <body>
+        <div class="container mt-4">
+            <form class= "mt-4" method="post" action="{% url 'dashboard' %}">
+                {% csrf_token %}
+                
+                <div class="form-control">
+                    <label for="{{ form.nome.id_for_label }}">Nome:</label>
+                    {{ form.nome }}
+                </div>
+                
+                <div class="form-control">
+                    <label for="{{ form.valor.id_for_label }}">Valor:</label>
+                    {{ form.valor }}
+                </div>
+                
+                <div class="form-control">
+                    <label for="{{ form.categoria.id_for_label }}">Categoria:</label>
+                    {{ form.categoria }}
+                </div>
+                
+                <div class="form-control">
+                    <label for="{{ form.descr.id_for_label }}">Descrição:</label>
+                    {{ form.descr }}
+                </div>
+                
+                <div class="form-control">
+                    <label for="{{ form.in_out.id_for_label }}">Entrada:</label>
+                    {{ form.in_out }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    Cadastrar Novo Movimento
+                </button>
+            </form>
+
+            <hr />
+
+            <!-- Resumo de entradas, saídas e total do mês -->
+            <h3>Resumo do Mês</h3>
+            <p>Entradas: R$ {{ entradas_do_mes }}</p>
+            <p>Saídas: R$ {{ saidas_do_mes }}</p>
+            <p>Total: R$ {{ total_do_mes }}</p>
+
+            <hr />
+
+            <!-- Lista de movimentos em formato de tabela -->
+            <h3>Movimentos</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movimento in movimentos_list %}
+                    <tr>
+                        <td>{{ movimento.nome }}</td>
+                        <td>{{ movimento.valor }}</td>
+                        <td>{{ movimento.categoria }}</td>
+                        <td>{{ movimento.data }}</td>
+                        <td>{{ movimento.descr }}</td>
+                        <td>
+                            {% if movimento.in_out %} Entrada {% else %} Saída
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
