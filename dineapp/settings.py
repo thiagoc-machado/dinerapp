@@ -30,8 +30,8 @@ ALLOWED_HOSTS = ['dinerapp.up.railway.app',"127.0.0.1", "localhost"]
 
 CORS_ALLOWED_ORIGINS = [
     "https://dinerapp.up.railway.app",
-    "127.0.0.1", 
-    "localhost", 
+    "http://127.0.0.1", 
+    "http://localhost", 
 ]
 # Application definition
 
