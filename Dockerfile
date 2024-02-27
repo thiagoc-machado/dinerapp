@@ -12,4 +12,4 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 RUN python manage.py migrate
 
-CMD ["gunicorn", "dinerapp.wsgi:application"]
+CMD ["gunicorn", "dineapp.wsgi:application"]
