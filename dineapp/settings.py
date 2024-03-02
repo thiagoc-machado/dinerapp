@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!e!t#5l^p5kjqscm%ippf-*!fq#-(myz+rwce-k8)m2n!qy(0b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['dinerapp.up.railway.app', '127.0.0.1', 'localhost']
 
 CORS_ALLOWED_ORIGINS = [
     "https://dinerapp.up.railway.app",
