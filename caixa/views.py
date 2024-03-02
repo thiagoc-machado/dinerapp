@@ -4,8 +4,10 @@ from datetime import datetime
 from .models import movimentos
 from .forms import MovimentoForm
 from django.views.decorators.csrf import csrf_exempt
+from .permissions import admin_or_staff_required
 
 @csrf_exempt
+@admin_or_staff_required
 def dashboard(request):
     if request.method == 'GET':
         form = MovimentoForm()
