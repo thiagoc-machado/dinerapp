@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['dinerapp.up.railway.app', '127.0.0.1', 'localhost']
 
 CORS_ALLOWED_ORIGINS = [
     "https://dinerapp.up.railway.app",
+    "dinerapp.up.railway.app"
     "http://127.0.0.1", 
     "http://localhost", 
 ]
@@ -141,7 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates/static'),
 ]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
