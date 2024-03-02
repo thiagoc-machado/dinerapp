@@ -17,6 +17,7 @@
 
 <div class="container mt-4">
     <form method="get" action="{% url 'dashboard' %}">
+        {% csrf_token %}
         <label for="mes">Selecione o mês e ano:</label>
         <select name="mes" id="mes" class="form-control">
             {% for month in meses %}
