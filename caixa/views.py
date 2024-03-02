@@ -3,8 +3,9 @@ from django.db.models import Sum
 from datetime import datetime
 from .models import movimentos
 from .forms import MovimentoForm
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def dashboard(request):
     if request.method == 'GET':
         form = MovimentoForm()
