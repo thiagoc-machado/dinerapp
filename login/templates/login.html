@@ -14,7 +14,7 @@
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link href="{% static 'login/login.css' %}" rel="stylesheet" /> 
+        <link href="{% static 'login/login.css' %}" rel="stylesheet" />
         <title>Mesada Manager - Login</title>
     </head>
     <body>
@@ -26,11 +26,14 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <h4>{{ MEDIA_URL }}</h4>
+                                    {% load static %}
                                     <img
                                         id="logo"
+                                        <img
                                         src="{{ MEDIA_URL }}logo-dinerapp.jpg"
-                                        alt="Logo"
+                                        alt="Logo Dinerapp"
                                     />
+                                    alt="Logo" />
                                 </div>
                             </div>
                             <hr />
